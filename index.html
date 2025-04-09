@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Email protection</title>
+
+
+</head>
+<body>
+
+<p>Solve this to see my contact</p>
+<p>
+    <label for="answer">Type here:</label>
+    <span id="num1"></span> + <span id="num2"></span> = <input type="number" id="answer">
+</p>
+<button class="check" onclick="checkAnswer()">Check</button>
+
+<div id="email-container" style="display: none">
+    <p>My email: mailtomick@proton.me</p>
+</div>
+
+
+
+<script>
+    //generating 2 random numbers from 1 to 10
+    let randomNum1 = Math.ceil(Math.random() * 5);
+    let randomNum2 = Math.ceil(Math.random() * 5);
+
+    //displaying the random numbers in the html
+    document.getElementById('num1').innerHTML = randomNum1;
+    document.getElementById('num2').innerHTML = randomNum2;
+
+    //function to check if the answer is correct
+    function checkAnswer() {
+        const userAnswer = parseInt(document.getElementById("answer").value);
+        const correctAnswer = randomNum1 + randomNum2;
+
+        if (userAnswer === correctAnswer) {
+            document.getElementById("email-container").style.display = "block";
+        } else {
+            alert("Wrong answer. Try again.");
+        }
+    }
+
+    //adding an event listener to get the result when "enter" key is pressed
+    document.getElementById("answer").addEventListener("keypress", function (event) {
+        if (event.key === "Enter") {
+            event.preventDefault();
+            document.getElementById("email-container").style.display = "block";
+        }
+    })
+
+
+</script>
+
+
+</body>
+</html>
