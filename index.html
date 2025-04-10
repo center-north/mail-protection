@@ -4,19 +4,41 @@
     <meta charset="UTF-8">
     <title>Email protection</title>
 
+    <style>
+        #square {
+            border: 1px solid darkseagreen;
+            padding: 2em;
+        }
+
+        #my-email{
+            margin-top: 20px;
+        }
+
+        .check{
+            padding: .5em;
+            border-radius: 10px;
+            border: 1px solid black;
+            margin-bottom: 10px;
+        }
+
+        #placeholder{
+            color: darkred;
+        }
+    </style>
 
 </head>
 <body>
-
-<p>Solve this to see my contact</p>
-<p>
-    <label for="answer">Type here:</label>
-    <span id="num1"></span> + <span id="num2"></span> = <input type="number" id="answer">
-</p>
-<button class="check" onclick="checkAnswer()">Check</button>
-
-<div id="email-container" style="display: none">
-    <p>My email: mailtomick@proton.me</p>
+<div id="square">
+    <p>Solve this to see my contact</p>
+    <p>
+        <label for="answer">Type here:</label>
+        <span id="num1"></span> + <span id="num2"></span> = <input type="number" id="answer">
+    </p>
+    <button class="check" onclick="checkAnswer()">Check</button>
+    <div><a id="placeholder">SOLVE TO SEE THE EMAIL!</a></div>
+    <div id="email-container" style="display: none">
+        <a id="my-email" href="mailto:mailtomick@proton.me">mailtomick@proton.me</a>
+    </div>
 </div>
 
 
@@ -37,6 +59,7 @@
 
         if (userAnswer === correctAnswer) {
             document.getElementById("email-container").style.display = "block";
+            document.getElementById("placeholder").style.display = "none";
         } else {
             alert("Wrong answer. Try again.");
         }
@@ -47,6 +70,7 @@
         if (event.key === "Enter") {
             event.preventDefault();
             document.getElementById("email-container").style.display = "block";
+            document.getElementById("placeholder").style.display = "none";
         }
     })
 
